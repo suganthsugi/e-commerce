@@ -1,0 +1,118 @@
+{% extends 'base.html' %} {% block lsbtn %}
+<a href="/accounts/login" class="btn rounded-pill btn-outline-info mx-1">Login</a>
+<a href="/accounts/signup" class="btn rounded-pill btn-outline-info mx-1">Sign Up</a>
+{% endblock lsbtn %}
+{% block productactive %}active{% endblock productactive %}
+
+{% block title %}ShopTing | {{product.name}}{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12">
+            <center><img src="{{product.imageURL}}" class="img-fluid img-responsive" alt=""></center>
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12">
+            <div class="align-items-center">
+                <p class="h3 py-3">{{product.name}}</p>
+                <p class="h4">Description : </p>
+                <p class="h5 py-3">{{product.desc|safe}}</p>
+                <p class="h5 py-3">Price : ₹{{product.price}}</p>
+                {% if user.is_authenticated %}
+                <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-warning add-btn btn-lg rounded-pill update-cart">Add to Cart</button>
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline-warning btn-lg rounded-pill">Add to Cart</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="container" style="overflow:hidden">
+    <center>
+        <p class="h2">Description</p>
+    </center>
+    <center>
+        {{product.detail|safe}}
+    </center>
+</div>
+
+
+
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <a style="text-decoration: none;" href="/products/laptop/">
+          <div class="card cdimg">
+            <div class="card-img">
+                <img class="img-fluid" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MnwxfDB8MXxyYW5kb218MHx8cGhvbmUsYXBwbGV8fHx8fHwxNjY4NTIzODI2&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=400" alt="Error in pic">
+            </div>
+            <div class="card-body bg-info">
+                <p class="heading text-center h4">
+                    <center><p class="h4 text-dark">Laptops</p></center>
+                </p>
+                <div class="bb">
+                <a href="/products/laptop/" class="btn btn-dark">View Product</a>
+                </div>
+            </div>
+        </div>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <a style="text-decoration: none;" href="/products/mobile/">
+          <div class="card cdimg">
+            <div class="card-img">
+                <img class="img-fluid" src="https://images.unsplash.com/photo-1592859849982-5ccedab34269?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MnwxfDB8MXxyYW5kb218MHx8bW9iaWxlfHx8fHx8MTY2ODUyNDkwOQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=400" alt="Error in pic">
+            </div>
+            <div class="card-body bg-warning">
+                <p class="heading text-center h4">
+                    <center><p class="h4 text-dark">Mobiles</p></center>
+                </p>
+                <div class="bb">
+                <a href="/products/mobile/" class="btn btn-dark">View Product</a>
+                </div>
+            </div>
+        </div>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <a style="text-decoration: none;" href="/products/watch/">
+          <div class="card cdimg">
+            <div class="card-img">
+                <img class="img-fluid" src="https://images.unsplash.com/photo-1602248145578-9e5bc50c77b3?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MnwxfDB8MXxyYW5kb218MHx8Z2FkZ2V0fHx8fHx8MTY2ODUyNDU3OQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=400" alt="Error in pic">
+            </div>
+            <div class="card-body bg-primary">
+                <p class="heading text-center h4">
+                    <center><p class="h4 text-dark">Watches</p></center>
+                </p>
+                <div class="bb">
+                <a href="/products/watch/" class="btn btn-dark">View Product</a>
+                </div>
+            </div>
+        </div>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12">
+        <a style="text-decoration: none;" href="/products/all/">
+          <div class="card cdimg">
+            <div class="card-img">
+                <img class="img-fluid" src="https://images.unsplash.com/photo-1515940279136-2f419eea8051?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MnwxfDB8MXxyYW5kb218MHx8Z2FkZ2V0fHx8fHx8MTY2ODUyNDU4NQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=400" alt="Error in pic">
+            </div>
+            <div class="card-body bg-danger">
+                <p class="heading text-center h4">
+                    <center><p class="h4 text-dark">Accessories</p></center>
+                </p>
+                <div class="bb">
+                <a href="/products/all/" class="btn btn-dark">View Product</a>
+                </div>
+            </div>
+        </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock content %}

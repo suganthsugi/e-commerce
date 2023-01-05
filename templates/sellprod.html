@@ -1,0 +1,84 @@
+{% extends 'base.html' %} {% block lsbtn %}
+<a href="/accounts/login" class="btn rounded-pill btn-outline-info mx-1">Login</a>
+<a href="/accounts/signup" class="btn rounded-pill btn-outline-info mx-1">Sign Up</a>
+{% endblock lsbtn %}
+{% block sellit %}
+<li class="nav-item">
+    <a class="nav-link active" href="{% url 'sell' %}">Sell</a>
+</li>
+{% endblock sellit %}
+{% block bgimg %}
+background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+{% endblock bgimg %}
+{% block title %}ShopTing | Sell Product{{product.name}}{% endblock title %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container mt-5">
+    <div style="background-color: rgba(255, 255, 255, 0.500);" class="card">
+        <div class="card-body">
+            <form action="" method="POST">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                    <label for="floatingInput">Product Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingPassword" placeholder="Password" required>
+                    <label for="floatingPassword">Price</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Description</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+                        <option>-- Select Category --</option>
+                        <option>Mobile</option>
+                        <option>Laptop</option>
+                        <option>Watch</option>
+                        <option>accessory</option>
+                    </select>
+                    <label for="floatingSelectGrid">Product Category</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+                        <option>-- Select Product Category --</option>
+                        <option>mobile</option>
+                        <option>earphone</option>
+                        <option>keyboard</option>
+                        <option>mouse</option>
+                        <option>headset</option>
+                        <option>laptop</option>
+                        <option>pc</option>
+                        <option>mobile-case</option>
+                        <option>laptop-case</option>
+                        <option>ladies-watch</option>
+                        <option>mens-watch</option>
+                        <option>camera</option>
+                        <option>mobile-accessory</option>
+                        <option>speaker</option>
+                        <option>laptop-accessory</option>
+                    </select>
+                    <label for="floatingSelectGrid">Product Category</label>
+                </div>
+                <div class="mb-3">
+                    <label for="formFileLg" class="form-label h6">Product Image</label>
+                    <input class="form-control form-control-lg" id="formFileLg" type="file" accept=".jpg,.jpeg,.png">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% else %}
+
+<div class="container">
+    <center><p class="h3 mt-5">Please login to continue</p></center>
+    <div class="container">
+        <center><a href="{% url 'login' %}" class="button-64 mx-5" role="button"><span class="text">Login</span></a></center>
+    </div>
+</div>
+
+{% endif %}
+{% endblock content %}

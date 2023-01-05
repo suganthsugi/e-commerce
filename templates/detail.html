@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}ShopTing | Account Detail{% endblock title %}
+{% block bgimg %}
+background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+{% endblock bgimg %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12"></div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div style="background-color: rgba(255, 255, 255, 0.500);"  class="card ls-shad py-2">
+                <div class="card-body">
+                    <p class="h5 py-2">Name : {{cus.name|title}}</p>
+                    <p class="h5 py-2">Email : {{cus.email}}</p>
+                    <p class="h5 py-2">address : {{address}}</p>
+                    <center><a href="{% url 'home' %}" class="btn btn-primary">Continue Shoping</a></center>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12"></div>
+    </div>
+</div>
+
+{% endblock content %}

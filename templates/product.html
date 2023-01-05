@@ -1,0 +1,130 @@
+{% extends 'base.html' %} {% block lsbtn %}
+<a href="/accounts/login" class="btn rounded-pill btn-outline-info mx-1">Login</a>
+<a href="/accounts/signup" class="btn rounded-pill btn-outline-info mx-1">Sign Up</a>
+{% endblock lsbtn %}
+{% block productactive %}active{% endblock productactive %}
+{% block bgimg %}
+background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+background-size: 400% 400%;
+animation: gradient 15s ease infinite;
+{% endblock bgimg %}
+
+{% block title %}ShopTing | Products{% endblock title %}
+
+{% block content %}
+
+<center>{{err}}</center>
+
+<center>{{heading}}</center>
+
+
+
+
+
+<div class="container mt-5">
+    <div class="row">
+        {% for product in products %}
+		<div class="col-md-6 col-lg-4 col-sm-12">
+            <div class="card border-info prod-shad my-3 mx-2">
+                <a style="text-decoration: none;" href="/prodetail/{{product.id}}">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{{product.imageURL}}">
+                    </div>
+                </a>
+                <div class="card-body">
+                    <a style="text-decoration: none;" href="/prodetail/{{product.id}}">
+                        <p style="height:70px" class="h3 text-dark">{{product.name}}</p>
+                    </a>
+                    {% if user.is_authenticated %}
+                    <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-warning add-btn update-cart">Add to Cart</button>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-outline-warning">Add to Cart</a>
+                    {% endif %}
+                    
+                    <a class="btn btn-outline-danger" href="/prodetail/{{product.id}}">View</a>
+                    
+                    <a style="text-decoration: none;" href="/prodetail/{{product.id}}">
+                        <h4 style="display: inline-block;float:right;"><strong class="text-dark">Rs.{{product.price}}</strong></h4>
+                    </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+</div>
+
+
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-3 mt-3">
+        <a style="text-decoration: none;" href="/products/laptop/">
+          <div class="card cdimg">
+            <div class="card-img">
+                <img class="img-fluid" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MnwxfDB8MXxyYW5kb218MHx8cGhvbmUsYXBwbGV8fHx8fHwxNjY4NTIzODI2&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=400" alt="Error in pic">
+            </div>
+            <div class="card-body bg-info">
+                <p class="heading text-center h4">
+                    <center><p class="h4 text-dark">Laptops</p></center>
+                </p>
+                <div class="bb">
+                <a href="/products/laptop/" class="btn btn-dark">View Product</a>
+                </div>
+            </div>
+        </div>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 mt-3">
+        <a style="text-decoration: none;" href="/products/mobile/">
+          <div class="card cdimg">
+            <div class="card-img">
+                <img class="img-fluid" src="https://images.unsplash.com/photo-1592859849982-5ccedab34269?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MnwxfDB8MXxyYW5kb218MHx8bW9iaWxlfHx8fHx8MTY2ODUyNDkwOQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=400" alt="Error in pic">
+            </div>
+            <div class="card-body bg-warning">
+                <p class="heading text-center h4">
+                    <center><p class="h4 text-dark">Mobiles</p></center>
+                </p>
+                <div class="bb">
+                <a href="/products/mobile/" class="btn btn-dark">View Product</a>
+                </div>
+            </div>
+        </div>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 mt-3">
+        <a style="text-decoration: none;" href="/products/watch/">
+          <div class="card cdimg">
+            <div class="card-img">
+                <img class="img-fluid" src="https://images.unsplash.com/photo-1602248145578-9e5bc50c77b3?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MnwxfDB8MXxyYW5kb218MHx8Z2FkZ2V0fHx8fHx8MTY2ODUyNDU3OQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=400" alt="Error in pic">
+            </div>
+            <div class="card-body bg-primary">
+                <p class="heading text-center h4">
+                    <center><p class="h4 text-dark">Watches</p></center>
+                </p>
+                <div class="bb">
+                <a href="/products/watch/" class="btn btn-dark">View Product</a>
+                </div>
+            </div>
+        </div>
+        </a>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 mt-3">
+        <a style="text-decoration: none;" href="/products/all/">
+          <div class="card cdimg">
+            <div class="card-img">
+                <img class="img-fluid" src="https://images.unsplash.com/photo-1515940279136-2f419eea8051?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MnwxfDB8MXxyYW5kb218MHx8Z2FkZ2V0fHx8fHx8MTY2ODUyNDU4NQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=400" alt="Error in pic">
+            </div>
+            <div class="card-body bg-danger">
+                <p class="heading text-center h4">
+                    <center><p class="h4 text-dark">Accessories</p></center>
+                </p>
+                <div class="bb">
+                <a href="/products/all/" class="btn btn-dark">View Product</a>
+                </div>
+            </div>
+        </div>
+        </a>
+      </div>
+    </div>
+</div>
+
+{% endblock content %}
